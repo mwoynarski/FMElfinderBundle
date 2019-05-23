@@ -174,7 +174,7 @@ class ElFinderConfigurationReader implements ElFinderConfigurationProviderInterf
      *
      * @return string
      */
-    private function getURL($parameter, Request $request, $homeFolder, $path)
+    protected function getURL($parameter, Request $request, $homeFolder, $path)
     {
         if (isset($parameter['url']) && $parameter['url']) {
             if (0 === strpos($parameter['url'], 'http')) {
@@ -186,7 +186,7 @@ class ElFinderConfigurationReader implements ElFinderConfigurationProviderInterf
             $path = $path.'/'.$homeFolder;
         }
 
-        return $request->getUriForPath('/'.trim($path, '/'));
+        return '/'.trim($path, '/');
     }
 
     /**
